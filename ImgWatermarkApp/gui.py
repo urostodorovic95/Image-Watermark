@@ -2,10 +2,10 @@
 A Tkinter app to deal with everything GUI related.
 """
 from tkinter import *
-from tkinter import ttk, colorchooser
+from tkinter import ttk, colorchooser, filedialog
 
 
-class Imagewatermark:
+class ImageWatermark:
     def __init__(self, root):
         root.title("Python Img watermark")
 
@@ -14,8 +14,8 @@ class Imagewatermark:
         frame.grid(row=0, column=0, sticky=(N, S, W, E))
 
         # Load btn
-        load_btn = ttk.Button(frame, text="Load Image")
-        load_btn.grid(column=0, row=0)
+        self.load_btn = ttk.Button(frame, text="Load Image", command=self.get_file_path)
+        self.load_btn.grid(column=0, row=0)
 
         # Save btn
         save_btn = ttk.Button(frame, text="Save Image")
@@ -46,6 +46,11 @@ class Imagewatermark:
         if color[1]:
             print(f"{color[1]}")
 
+    # @property  #Decorate with a getter atrribute to first open this window
+    def get_file_path(self):
+        if (file_path := filedialog.askopenfilename(title="Select Image", filetypes=[("All Files", "*.*")])):
+            return file_path
+
     def __repr__(self) -> str:
         return f"ImageWatermarkApp(...)"
         ...
@@ -53,5 +58,5 @@ class Imagewatermark:
 
 # for testing only:
 root = Tk()
-Imagewatermark(root=root)
+ImageWatermark(root=root)
 root.mainloop()
