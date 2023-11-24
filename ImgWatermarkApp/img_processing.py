@@ -3,4 +3,4 @@ Deals with interacting with images;
 
 Uses the Pillow module.
 """
-from PIL import Image
+# Import the required Libraries
