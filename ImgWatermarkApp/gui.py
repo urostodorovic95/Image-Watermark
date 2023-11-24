@@ -77,7 +77,8 @@ class ImageWatermark:
             # Convert the resized Pillow Image to a Tkinter PhotoImage
             tk_image = ImageTk.PhotoImage(resized_image)
 
-            # Update the self.img_canvas with the new image
+             # Update the canvas with the new image
+            self.img_canvas.config(width=new_width, height=new_height)
             self.img_canvas.create_image(0, 0, anchor="nw", image=tk_image)
 
             # Keep a reference to the PhotoImage to prevent it from being garbage collected
